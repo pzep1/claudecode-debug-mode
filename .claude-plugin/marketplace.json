@@ -1,0 +1,18 @@
+{
+  "name": "pzep1-claudecode-debug-mode",
+  "description": "Runtime debugging plugin marketplace",
+  "owner": {
+    "name": "pzep1"
+  },
+  "plugins": [
+    {
+      "name": "claude-debug-plugin",
+      "description": "Runtime debugging via instrumented fetch calls - capture runtime data from code execution",
+      "version": "2.0.0",
+      "source": "./",
+      "author": {
+        "name": "pzep1"
+      }
+    }
+  ]
+}
