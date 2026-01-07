@@ -1,0 +1,13 @@
+{
+  "name": "claude-debug-plugin",
+  "version": "1.0.0",
+  "description": "Runtime debugging via instrumented fetch calls - capture runtime data from code execution",
+  "author": {
+    "name": "pzep1"
+  },
+  "repository": "https://github.com/pzep1/claudecode-debug-mode",
+  "license": "MIT",
+  "keywords": ["debugging", "runtime", "fetch", "instrumentation"],
+  "skills": "./skills/",
+  "commands": "./commands/"
+}
