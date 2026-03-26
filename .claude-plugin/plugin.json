@@ -1,6 +1,18 @@
 {
   "name": "claude-debug-plugin",
   "version": "2.0.0",
-  "description": "Runtime debugging via instrumented fetch calls",
-  "skills": "./skills/"
+  "description": "Runtime debugging for Claude Code via instrumented fetch calls and a bundled local debug server.",
+  "author": {
+    "name": "Panos Zafeiropoulos"
+  },
+  "homepage": "https://github.com/pzep1/claudecode-debug-mode",
+  "repository": "https://github.com/pzep1/claudecode-debug-mode",
+  "license": "MIT",
+  "keywords": [
+    "debugging",
+    "runtime",
+    "instrumentation",
+    "skills"
+  ],
+  "skills": "./skills"
 }

@@ -1,6 +1,7 @@
 ---
 name: runtime-debugging
-description: Debug runtime issues by capturing data from instrumented fetch calls. Use when debugging async issues, state problems, race conditions, or when console.log isn't sufficient.
+description: This skill should be used when the user asks to "debug a runtime issue", "trace an async bug", "inspect state changes", "track a race condition", or otherwise needs runtime instrumentation because logs or stack traces are not enough.
+version: 2.0.0
 allowed-tools: Bash, Read, Write, Edit, Grep
 ---
 
@@ -19,50 +20,11 @@ Capture runtime data from instrumented fetch calls. Use when you need to underst
 
 ### Step 1: Create Debug Server
 
-Write the server to `.claude-debug/server.js`:
-
-```javascript
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-
-const PORT = parseInt(process.argv[2]) || 3333;
-const LOG_DIR = '.claude-debug';
-const LOG_FILE = path.join(LOG_DIR, 'debug.log');
-
-if (!fs.existsSync(LOG_DIR)) fs.mkdirSync(LOG_DIR, { recursive: true });
-
-const server = http.createServer((req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
-  if (req.url === '/health') { res.writeHead(200); res.end('ok'); return; }
-
-  if (req.url === '/debug' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', () => {
-      try {
-        const { label, data } = JSON.parse(body);
-        const line = `[${new Date().toISOString()}] ${label}${data ? ' | ' + JSON.stringify(data) : ''}\n`;
-        fs.appendFileSync(LOG_FILE, line);
-        res.writeHead(200); res.end('ok');
-      } catch (e) { res.writeHead(400); res.end('bad json'); }
-    });
-    return;
-  }
-  res.writeHead(404); res.end();
-});
-
-server.listen(PORT, () => console.log(`Debug server on :${PORT}`));
-process.on('SIGINT', () => { server.close(); process.exit(0); });
-```
+Run the bundled server script:
 
 Start it:
 ```bash
-node .claude-debug/server.js 3333 &
+node "${CLAUDE_PLUGIN_ROOT}/scripts/debug-server.js" 3333 &
 ```
 
 Verify:
@@ -118,7 +80,7 @@ Look for:
 ### Step 5: Cleanup
 
 ```bash
-pkill -f ".claude-debug/server.js"
+pkill -f "debug-server.js"
 rm -rf .claude-debug/
 ```
 

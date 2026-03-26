@@ -1,8 +1,11 @@
 {
   "name": "pzep1-claudecode-debug-mode",
-  "description": "Runtime debugging plugin marketplace",
   "owner": {
     "name": "pzep1"
+  },
+  "metadata": {
+    "description": "Claude Code runtime debugging plugins and workflows",
+    "version": "2.0.0"
   },
   "plugins": [
     {

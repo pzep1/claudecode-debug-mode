@@ -4,9 +4,23 @@ Runtime debugging for Claude Code via instrumented fetch calls.
 
 ## Installation
 
+### Via skills.sh
+
 ```bash
-/plugin marketplace add pzep1/claudecode-debug-mode
-/plugin install claude-debug-plugin@pzep1-claudecode-debug-mode
+npx skills add pzep1/claudecode-debug-mode
+```
+
+### Via Claude Code Plugin Marketplace
+
+```bash
+claude plugin marketplace add pzep1/claudecode-debug-mode
+claude plugin install claude-debug-plugin@pzep1-claudecode-debug-mode
+```
+
+### Local Development
+
+```bash
+npx skills add ./claudecode-debug-mode
 ```
 
 ## Usage
@@ -19,7 +33,7 @@ Claude automatically uses this skill when you ask to debug runtime issues:
 
 ## How It Works
 
-1. **Start Debug Mode** - Claude writes a temp server to `.claude-debug/server.js`
+1. **Start Debug Mode** - Claude runs the bundled debug server from `scripts/debug-server.js`
 2. **Instrument Code** - Claude inserts `fetch()` calls at strategic locations
 3. **Reproduce the Issue** - You run your code and reproduce the bug
 4. **Analyze Logs** - Claude reads `.claude-debug/debug.log` to identify the problem
@@ -35,6 +49,20 @@ fetch("http://localhost:3333/debug", {
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ label: "function-entry", data: { arg1, arg2 } }),
 }).catch(() => {});
+```
+
+## Plugin Structure
+
+```text
+claudecode-debug-mode/
+├── .claude-plugin/
+│   ├── marketplace.json
+│   └── plugin.json
+├── scripts/
+│   └── debug-server.js
+└── skills/
+    └── runtime-debugging/
+        └── SKILL.md
 ```
 
 ## License
