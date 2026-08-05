@@ -1,3 +1,7 @@
+// DEPRECATED (2.x). Superseded by `dbg sink`, which adds token auth, batching,
+// ordered multi-producer ingest and bounded query commands:
+//     node bin/dbg.js sink
+// Kept working so existing 2.x setups do not break.
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
