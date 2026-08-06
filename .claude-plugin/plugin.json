@@ -1,18 +1,11 @@
 {
   "name": "claude-debug-plugin",
-  "version": "2.0.0",
-  "description": "Runtime debugging for Claude Code via instrumented fetch calls and a bundled local debug server.",
-  "author": {
-    "name": "Panos Zafeiropoulos"
-  },
+  "version": "3.0.0",
+  "description": "A flight recorder for debugging: record a program's real runtime behaviour via inspector logpoints (no source edits), then query it with bounded commands. Cross-process request traces, network/HAR capture, run-vs-run diffing, and flaky-test bisection.",
+  "author": { "name": "Panos Zafeiropoulos" },
   "homepage": "https://github.com/pzep1/claudecode-debug-mode",
   "repository": "https://github.com/pzep1/claudecode-debug-mode",
   "license": "MIT",
-  "keywords": [
-    "debugging",
-    "runtime",
-    "instrumentation",
-    "skills"
-  ],
+  "keywords": ["debugging", "runtime", "instrumentation", "logpoints", "tracing", "har", "flaky-tests", "skills"],
   "skills": "./skills"
 }

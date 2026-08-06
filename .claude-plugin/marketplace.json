@@ -1,21 +1,17 @@
 {
   "name": "pzep1-claudecode-debug-mode",
-  "owner": {
-    "name": "pzep1"
-  },
+  "owner": { "name": "pzep1" },
   "metadata": {
     "description": "Claude Code runtime debugging plugins and workflows",
-    "version": "2.0.0"
+    "version": "3.0.0"
   },
   "plugins": [
     {
       "name": "claude-debug-plugin",
-      "description": "Runtime debugging via instrumented fetch calls - capture runtime data from code execution",
-      "version": "2.0.0",
+      "description": "Flight-recorder debugging: zero-source-edit logpoints on live processes, cross-process request traces, network/HAR capture, run diffing, flaky-test bisection",
+      "version": "3.0.0",
       "source": "./",
-      "author": {
-        "name": "pzep1"
-      }
+      "author": { "name": "pzep1" }
     }
   ]
 }

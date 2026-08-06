@@ -1,0 +1,11 @@
+{
+  "name": "claudecode-debug-mode",
+  "version": "3.0.0",
+  "description": "A flight recorder for debugging: record runtime behaviour via inspector logpoints, then query it.",
+  "bin": { "dbg": "./bin/dbg.js" },
+  "scripts": { "test": "node test/run.js" },
+  "engines": { "node": ">=22" },
+  "license": "MIT",
+  "repository": "github:pzep1/claudecode-debug-mode",
+  "files": ["bin", "lib", "agents", "skills", ".claude-plugin"]
+}
